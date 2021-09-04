@@ -101,3 +101,80 @@
 // mat.calcAge();
 
 // Regular Functins vs. Arrow Function
+// const jonas = {
+//     firstName: 'jonas',
+//     year: 1991,
+//     calcAge: function() {
+//         console.log(this);
+//     },
+
+//     greet:() =>{
+//         console.log(this);
+//         console.log(`hey ! ${this.firstName}`);
+//     },
+// }
+
+
+const jonas = {
+    firstName: 'jonas',
+    year: 1991,
+    calcAge: function() {
+        console.log(this);
+        const self = this; //self or that
+        // const isMillenial = function () {
+        //     console.log(self.year >= 1981 && self.year <= 1996);
+        // };
+        const isMillenial = () =>{
+            console.log(self.year >= 1981 && self.year <= 1996);
+        };
+        isMillenial();
+    },
+
+    greet:() =>{
+        console.log(this);
+        console.log(`hey ! ${this.firstName}`);
+    },
+}
+
+jonas.greet();
+jonas.calcAge();
+
+///Objects vs. primitive
+// let age = 30;
+
+// const me = {
+//     name: 'nishank',
+//     age: 32
+// }
+
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName= 'Davis';
+console.log(lastName, oldLastName);
+///reference type
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 32,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('before marriage', jessica);
+console.log('after marriage', marriedJessica);
+
+//Copying objects
+const jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 32,
+    family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('before marriage', jessica2);
+console.log('after marriage', jessicaCopy);
