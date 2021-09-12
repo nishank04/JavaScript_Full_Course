@@ -52,29 +52,29 @@ restaurant.orderDelivery({
 
 //Spread Operators(...)
 
-const arr = [7, 8, 9];
-const badArray = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badArray);
+// const arr = [7, 8, 9];
+// const badArray = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badArray);
 
-const newArray = [1, 2, ...arr];
-console.log(newArray);
+// const newArray = [1, 2, ...arr];
+// console.log(newArray);
 
-const newMenu = [...restaurant.mainMenu, 'Noodles'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Noodles'];
+// console.log(newMenu);
 
-//Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
-console.log(mainMenuCopy);
+// //Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy);
 
-//Join 2 arrays
-const menu = [...restaurant.starteMenu, ...restaurant.mainMenu];
-console.log(menu);
+// //Join 2 arrays
+// const menu = [...restaurant.starteMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
-//Iterables: arrays, strings, maps, sets. NO Objects 
-const str = 'Nishank';
-const letters = [...str,' ', 'S.khgk'];
-console.log(letters);
-console.log(...str);
+// //Iterables: arrays, strings, maps, sets. NO Objects 
+// const str = 'Nishank';
+// const letters = [...str,' ', 'S.khgk'];
+// console.log(letters);
+// console.log(...str);
 
 //Real World Eaxample
 // const ingredients = [prompt("Let's make pasta! Ingredient 1?"),
