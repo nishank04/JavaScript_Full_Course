@@ -58,6 +58,51 @@ restaurant.orderDelivery({
     starterIndex: 1,
 })
 
+//Working with String - Part - 2///
+//Split and Join
+console.log('a+very+nice+string'.split('+'));
+console.log('Garima Saxena'.split(' '));
+
+const [firstName, lastName] = 'Garima Saxena'.split(' ');
+const newName = ['Ms.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+    const names = name.split(' ');
+    const namesUpper = [];
+
+    for (const n of names) {
+        //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+        namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    }
+    console.log(namesUpper.join(' '));
+
+}
+capitalizeName('nishank nicky nicka nicku');
+capitalizeName('garima gary gari game gama');
+
+//padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Garima'.padStart(20, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+    const str = number + '';
+    const last = str.slice(-4);
+    return last.padStart(str.length, '*');
+};
+console.log(maskCreditCard(4337846386464738));
+
+///Repeat
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInline = function (n) {
+    console.log(`There are ${n} planes in line ${'1'.repeat(n)}`);
+};
+
+planesInline(5);
+
 ////Working With String
 // const airline = 'Air India';
 // const plane = 'A320'
@@ -103,47 +148,47 @@ restaurant.orderDelivery({
 // console.log(passengerCorrect);
 
 //Comparing Emails
-const email = 'hello@garima.io';
-const loginEmail = ' HELOO@GARIMA.Io \n';
-// const lowerEmail = loginEmail.toLowerCase();
-// const trimmedEmail = lowerEmail.trim();
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail);
+// const email = 'hello@garima.io';
+// const loginEmail = ' HELOO@GARIMA.Io \n';
+// // const lowerEmail = loginEmail.toLowerCase();
+// // const trimmedEmail = lowerEmail.trim();
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
 
-//replacing
-const priceGB = '288,97';
-const priceUS = priceGB.replace(',', '.');
-console.log(priceUS);
+// //replacing
+// const priceGB = '288,97';
+// const priceUS = priceGB.replace(',', '.');
+// console.log(priceUS);
 
-const announcement = 
-`All passengers come to boarding door 23. Boarding door 23!`;
-console.log(announcement.replace('door', 'gate'));
-//console.log(announcement.replaceAll('door', 'gate'));
-console.log(announcement.replace(/door/g, 'gate'));
+// const announcement = 
+// `All passengers come to boarding door 23. Boarding door 23!`;
+// console.log(announcement.replace('door', 'gate'));
+// //console.log(announcement.replaceAll('door', 'gate'));
+// console.log(announcement.replace(/door/g, 'gate'));
 
-//Booleans
-const plane = 'Airbus A320neo';
-console.log(plane.includes('A320'));
-// console.log(plane.contains('A320'));
-console.log(plane.includes('Boeing'));
-console.log(plane.startsWith('Airb'));
+// //Booleans
+// const plane = 'Airbus A320neo';
+// console.log(plane.includes('A320'));
+// // console.log(plane.contains('A320'));
+// console.log(plane.includes('Boeing'));
+// console.log(plane.startsWith('Airb'));
 
-if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
-    console.log('Part of the new Airus family');
-}
+// if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+//     console.log('Part of the new Airus family');
+// }
 
-//Practice Example
-const checkBaggage = function (items) {
-    const baggage = items.toLowerCase();
+// //Practice Example
+// const checkBaggage = function (items) {
+//     const baggage = items.toLowerCase();
 
-    if (baggage.includes('knife') || baggage.includes('gun')) {
-        console.log('You are not allowed');
-    } else{
-        console.log('Welcome Aboard!!');
-    }
-}
+//     if (baggage.includes('knife') || baggage.includes('gun')) {
+//         console.log('You are not allowed');
+//     } else{
+//         console.log('Welcome Aboard!!');
+//     }
+// }
 
-checkBaggage('I have a laptop, some food and a pocket KNIFE');
+// checkBaggage('I have a laptop, some food and a pocket KNIFE');
 
 //Maps: Iteration///
 
