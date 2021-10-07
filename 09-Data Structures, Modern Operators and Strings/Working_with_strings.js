@@ -58,50 +58,93 @@ restaurant.orderDelivery({
     starterIndex: 1,
 })
 
+//Coding Challenge - 4
+// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+// The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+// THIS TEST DATA (pasted to textarea)
+// underscore_case
+//  first_name
+// Some_Variable 
+//   calculate_AGE
+// delayed_departure
+// SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+// underscoreCase      :white_check_mark:
+// firstName           :white_check_mark::white_check_mark:
+// someVariable        :white_check_mark::white_check_mark::white_check_mark:
+// calculateAge        :white_check_mark::white_check_mark::white_check_mark::white_check_mark:
+// delayedDeparture    :white_check_mark::white_check_mark::white_check_mark::white_check_mark::white_check_mark:
+// HINT 1: Remember which character defines a new line in the textarea :wink:
+// HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+// HINT 3: Start without worrying about the :white_check_mark:. Tackle that only after you have the variable name conversion working :wink:
+// HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+// Afterwards, test with your own test data!
+
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function(){
+    const text = document.querySelector('textarea').value;
+    const rows = text.split('\n');
+
+    for (const [i, row] of rows.entries()){
+        const [first, second] = row.toLocaleLowerCase().trim().split('_');
+
+        const output = `${first}${second.replace(
+            second[0],
+            second[0].toUpperCase()
+        )}`;
+        console.log(`${output.padEnd(20)}${'ok'.repeat(i + 1)}`);
+    }
+})
+
+
+
+
 //Working with String - Part - 2///
 //Split and Join
-console.log('a+very+nice+string'.split('+'));
-console.log('Garima Saxena'.split(' '));
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Garima Saxena'.split(' '));
 
-const [firstName, lastName] = 'Garima Saxena'.split(' ');
-const newName = ['Ms.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const [firstName, lastName] = 'Garima Saxena'.split(' ');
+// const newName = ['Ms.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizeName = function (name) {
-    const names = name.split(' ');
-    const namesUpper = [];
+// const capitalizeName = function (name) {
+//     const names = name.split(' ');
+//     const namesUpper = [];
 
-    for (const n of names) {
-        //namesUpper.push(n[0].toUpperCase() + n.slice(1));
-        namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-    }
-    console.log(namesUpper.join(' '));
+//     for (const n of names) {
+//         //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//         namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//     }
+//     console.log(namesUpper.join(' '));
 
-}
-capitalizeName('nishank nicky nicka nicku');
-capitalizeName('garima gary gari game gama');
+// }
+// capitalizeName('nishank nicky nicka nicku');
+// capitalizeName('garima gary gari game gama');
 
-//padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(20, '+').padEnd(30, '+'));
-console.log('Garima'.padStart(20, '+').padEnd(30, '+'));
+// //padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(20, '+').padEnd(30, '+'));
+// console.log('Garima'.padStart(20, '+').padEnd(30, '+'));
 
-const maskCreditCard = function (number) {
-    const str = number + '';
-    const last = str.slice(-4);
-    return last.padStart(str.length, '*');
-};
-console.log(maskCreditCard(4337846386464738));
+// const maskCreditCard = function (number) {
+//     const str = number + '';
+//     const last = str.slice(-4);
+//     return last.padStart(str.length, '*');
+// };
+// console.log(maskCreditCard(4337846386464738));
 
-///Repeat
-const message2 = 'Bad weather... All Departures Delayed... ';
-console.log(message2.repeat(5));
+// ///Repeat
+// const message2 = 'Bad weather... All Departures Delayed... ';
+// console.log(message2.repeat(5));
 
-const planesInline = function (n) {
-    console.log(`There are ${n} planes in line ${'1'.repeat(n)}`);
-};
+// const planesInline = function (n) {
+//     console.log(`There are ${n} planes in line ${'1'.repeat(n)}`);
+// };
 
-planesInline(5);
+// planesInline(5);
 
 ////Working With String
 // const airline = 'Air India';
@@ -132,8 +175,49 @@ planesInline(5);
 // checkMiddleSeat(`11B`);
 // checkMiddleSeat(`23C`);
 // checkMiddleSeat(`3E`);
-
-// console.log(new String('nishank'));
+// const game = {
+//     team1: 'Bayern Munich',
+//     team2: 'Borrussia Dortmund',
+//     players: [
+//       [
+//         'Neuer',
+//         'Pavard',
+//         'Martinez',
+//         'Alaba',
+//         'Davies',
+//         'Kimmich',
+//         'Goretzka',
+//         'Coman',
+//         'Muller',
+//         'Gnarby',
+//         'Lewandowski',
+//       ],
+//       [
+//         'Burki',
+//         'Schulz',
+//         'Hummels',
+//         'Akanji',
+//         'Hakimi',
+//         'Weigl',
+//         'Witsel',
+//         'Hazard',
+//         'Brandt',
+//         'Sancho',
+//         'Gotze',
+//       ],
+//     ],
+//     score: '4:0',
+//     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//     date: 'Nov 9th, 2037',
+//     odds: {
+//       team1: 1.33,
+//       x: 3.25,
+//       team2: 6.5,
+//     },
+//   };
+// const [gk, ...fieldPlayers] = players;
+// console.log(gk, fieldPlayers);
+  console.log(new String('nishank'));
 // console.log(typeof new String('nishank'));
 // console.log(typeof new String('nishank').slice(1));
 
