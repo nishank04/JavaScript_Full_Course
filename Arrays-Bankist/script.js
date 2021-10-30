@@ -87,6 +87,8 @@ displayMovements(account1.movements)
 //calculate and display balance in our app
 
 
+
+
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} EUR`;
@@ -94,7 +96,46 @@ const calcDisplayBalance = function (movements) {
 };
 calcDisplayBalance(account1.movements);
 
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov,0)
+  labelSumIn.textContent = `${incomes}`;
 
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov,0)
+  labelSumOut.textContent = `${Math.abs(out)}`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr)
+      return int >=1
+    })
+    .reduce((acc, int) => acc + int,0);
+  labelSumInterest.textContent = `${interest}`;
+}
+
+calcDisplaySummary(account1.movements)
+
+///implementing login
+//event handler
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount)
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)){
+    console.log('LOGIN')
+  }
+})
+
+ 
 ///Create UserName
 
 //Practice - Hardcoded value
@@ -336,3 +377,19 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(max);
+
+///Chaining map, filter and reduce methods
+const totalDepositUSD = movements
+.filter(mov => mov > 0)
+.map(mov => mov * eurToUsd)
+.reduce((acc, mov) => acc + mov,0)
+console.log(totalDepositUSD)
+
+
+///find method
+const firstWithDrawal = movements.find(mov => mov < 0)
+
+console.log(firstWithDrawal)
+
+const account = accounts.find(acc => acc.owner === 'Jonas Schmedtmann')
+console.log(account)
