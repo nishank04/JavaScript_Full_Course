@@ -85,9 +85,9 @@ const displayMovements = function (movements) {
 //displayMovements(account1.movements)
 
 //calculate and display balance in our app
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+const calcDisplayBalance = function (acc) {
+    acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance} EUR`;
 
 };
 //calcDisplayBalance(account1.movements);
@@ -157,6 +157,18 @@ createUsernames(accounts);
 //console.log(accounts);
 //console.log(username)
 
+const updateUI = function (acc) {
+  //Display movements
+  displayMovements(acc.movements);
+
+  //Display balance
+  calcDisplayBalance(acc);
+
+  //Display Summary
+  calcDisplaySummary(acc)
+}
+
+
 ///implementing login
 //event handler
 let currentAccount;
@@ -176,16 +188,63 @@ btnLogin.addEventListener('click', function(e){
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    //Display movements
-    displayMovements(currentAccount.movements);
-
-    //Display balance
-    calcDisplayBalance(currentAccount.movements);
-
-    //Display Summary
-    calcDisplaySummary(currentAccount)
+    updateUI(currentAccount)
   }
 })
+
+btnTransfer.addEventListener('click', function (e){
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const recieverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value);
+    //console.log(amount,recieverAcc )
+    
+    if (
+      amount > 0 &&
+      recieverAcc &&
+      currentAccount.balance >= amount &&
+      recieverAcc.username !== currentAccount.username
+    ) {
+      //doing the transfer
+      currentAccount.movements.push(-amount)
+      recieverAcc.movements.push(amount)
+
+      updateUI(currentAccount)
+      //console.log('Transfer Valid')
+    }
+
+    inputTransferAmount.value = inputTransferTo.value = '';
+  
+})
+
+
+/*Interview Questions
+1. Event loop concepts(single threaded then how asycronous)
+2. Array methods
+3. Destructuring
+4. Otional chaining
+5. Prototypal inheritance(oops). Functional and procedural and classes
+6. Asynchronous - Async/await, promises
+7. Callbacks, callback hell(how to avoid callback hell)
+8. Closures, IIFE, first order functions
+9. Execution context
+10. JSX
+11. diff b/w elements and components
+12. create components
+13. state, props(why should we not update stae directly)
+14. lifecycle methods
+15. Redux
+16. controlled and uncontrolled components
+17. create elements and clone elements
+18. set state with dynamic key name
+19. key fragments
+20. how to prevent components in getting rendered
+21. route splitting
+22. high order components
+23. Middleware to redux
+24. Relay is different than redux
+25. mapstatetoprops vs mapdispatchtoprops
+26. RxJs
 //Coding challenge 2
 // Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
 
