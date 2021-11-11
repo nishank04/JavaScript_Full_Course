@@ -214,9 +214,26 @@ btnTransfer.addEventListener('click', function (e){
     }
 
     inputTransferAmount.value = inputTransferTo.value = '';
-  
-})
+  })
 
+btnClose.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.
+    username &&
+    Number(inputClosePin.value) === currentAccount.pin){
+      const index = accounts.findIndex(
+        acc => acc.username === currentAccount.username
+      );
+      console.log(index)
+      //.indexOf(23)
+      //Delete an account
+        accounts.splice(index, 1)
+        //hide UI
+        containerApp.style.opacity = 0;
+    }
+})
 
 /*Interview Questions
 1. Event loop concepts(single threaded then how asycronous)
@@ -399,20 +416,20 @@ const checkDogs = function (dogsJulia, dogsKate) {
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);*/
 
-const eurToUsd = 1.1;
+//const eurToUsd = 1.1;
 
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd;
 // })
 
-const movementsUSD = movements.map(mov => mov * eurToUsd);
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
 
 // const movementDescriptions = movements.map((mov, i, arr) => {
 //   if (mov > 0) {
@@ -431,18 +448,18 @@ console.log(movementsUSDfor);
 
 // console.log(movementDescriptions);
 
-const deposit = movements.filter(function (mov) {
-  return mov > 0;
-});
-console.log(movements);
-console.log(deposit)
+// const deposit = movements.filter(function (mov) {
+//   return mov > 0;
+// });
+// console.log(movements);
+// console.log(deposit)
 
-const depositFor = [];
-for (const mov of movements) if (mov > 0) depositFor.push(mov);
-console.log(depositFor);
+// const depositFor = [];
+// for (const mov of movements) if (mov > 0) depositFor.push(mov);
+// console.log(depositFor);
 
-const withdrawals = movements.filter(mov => mov <0);
-console.log(withdrawals);
+// const withdrawals = movements.filter(mov => mov <0);
+// console.log(withdrawals);
 
 //accumulator -> snowball
 // const balance = movements.reduce(function (acc, cur, i, arr){
@@ -456,29 +473,34 @@ console.log(withdrawals);
 
 
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov;
-console.log(balance2);
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
+// console.log(balance2);
 
 //Maximum Value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
-console.log(max);
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
+// console.log(max);
 
 ///Chaining map, filter and reduce methods
-const totalDepositUSD = movements
-.filter(mov => mov > 0)
-.map(mov => mov * eurToUsd)
-.reduce((acc, mov) => acc + mov,0)
-console.log(totalDepositUSD)
+// const totalDepositUSD = movements
+// .filter(mov => mov > 0)
+// .map(mov => mov * eurToUsd)
+// .reduce((acc, mov) => acc + mov,0)
+// console.log(totalDepositUSD)
 
 
 ///find method
-const firstWithDrawal = movements.find(mov => mov < 0)
+// const firstWithDrawal = movements.find(mov => mov < 0)
 
-console.log(firstWithDrawal)
+// console.log(firstWithDrawal)
 
-const account = accounts.find(acc => acc.owner === 'Jonas Schmedtmann')
-console.log(account)
+// const account = accounts.find(acc => acc.owner === 'Jonas Schmedtmann')
+// console.log(account)
+
+console.log(movements.includes(-130))
+console.log(movements.some(mov => mov === -130))
+const anyDeposits = movements.some(mov => mov >1500);
+console.log(anyDeposits)
