@@ -155,6 +155,20 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+//Fake Login - Always logged in
+currentAccount = account1;
+updateUI(currentAccount)
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = now.getDate()
+const month = now.getMonth() + 1
+const year = now.getFullYear()
+const hour = now.getHours()
+const min = now.getMinutes()
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`
+
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -350,3 +364,52 @@ labelBalance.addEventListener('click', function (){
     if (i % 2 === 0) row.style.backgroundColor = 'orange'
   });  
 })
+
+///Big Int
+console.log(2 ** 53 - 1)
+console.log(Number.MAX_SAFE_INTEGER)
+console.log(2 ** 53 + 1)
+console.log(2 ** 53 + 2)
+console.log(2 ** 53 + 3)
+console.log(2 ** 53 + 4)
+
+console.log(6546576687987875534524243234243243365765678n);
+console.log(BigInt(546576687987875534524243234243243365765678));
+
+///operations
+console.log(10000n + 10000n)
+
+const huge = 24335646757689987576456n
+const num = 23
+console.log(huge * BigInt(num))
+
+console.log(11n / 3n)
+
+///create dates
+// const now = new Date()
+// console.log(now)
+
+// console.log(new Date('Nov 27 2021 15:35:41'))
+// console.log(new Date('December 24, 2015'));
+// console.log(new Date(account1.movementsDates[0]))
+
+// console.log(new Date(2037, 10, 10, 15, 23, 5))
+// console.log(new Date(2037, 10, 10))
+
+// console.log(new Date(0))
+// console.log(new Date(3 * 24 * 60 * 60 * 1000))
+
+///Working with Dates
+const future = new Date(2037, 10, 10, 19, 15, 23)
+console.log(future)
+console.log(future.getFullYear())
+console.log(future.getMonth())
+console.log(future.getDate())
+console.log(future.getDay())
+console.log(future.getHours())
+console.log(future.getMinutes())
+console.log(future.getSeconds())
+console.log(future.toISOString())
+console.log(future.getTime())
+
+console.log(Date.now())
