@@ -22,17 +22,17 @@ const restaurant = {
 // const [x, ,y] = arr;
 // console.log(x, y);
 
-// let [main, ,secondary] = restaurant.categories;
-// console.log(restaurant.categories);
-// console.log(main, secondary);
+let [main, ,secondary] = restaurant.categories;
+console.log(restaurant.categories);
+console.log(main, secondary);
 
 // // const temp = main;
 // // main = secondary;
 // // secondary = temp;
 // // console.log(main, secondary);
 
-// [main, secondary] = [secondary, main];
-// console.log(main, secondary);
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
 
 // //Recieve 2 return values from the function through destructuring
 // const [starter, mainCourse] = restaurant.order(2, 0)

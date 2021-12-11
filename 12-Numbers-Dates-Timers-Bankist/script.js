@@ -171,17 +171,17 @@ const startLogoutTimer = function () {
 //decrease the time
     time--;
   }
-  let time = 10;
+  let time = 120;
   tick()
 
   //call the timer every second
   const timer = setInterval(tick, 1000);
-  
+  return timer;
 }
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 //Fake Login - Always logged in
 // currentAccount = account1;
@@ -219,7 +219,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    startLogoutTimer();
+    if (timer) clearInterval(timer)
+    timer = startLogoutTimer();
     // Update UI
     updateUI(currentAccount);
   }
@@ -249,6 +250,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    //Reset timer
+    clearInterval(timer);
+    timer = startLogoutTimer();
   }
 });
 
@@ -267,8 +272,13 @@ btnLoan.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
-    },2500)
 
+    //Rest Timer
+    clearInterval(timer);
+    timer = startLogoutTimer();
+    },1000)
+
+    
   }
   inputLoanAmount.value = '';
 });
